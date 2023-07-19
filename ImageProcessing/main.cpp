@@ -4,6 +4,6 @@ using namespace std;
 
 
 int main() {
-	readCam();
+	edgeDetector();
 	return 0;
 }

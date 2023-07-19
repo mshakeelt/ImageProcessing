@@ -37,6 +37,8 @@ void readVid() {
 	}
 }
 
+///////////////  Webcam  //////////////////////
+
 void readCam() {
 	VideoCapture cap(0);
 	Mat img;
@@ -52,4 +54,44 @@ void readCam() {
 			break;
 		}
 	}
+}
+
+void imgConversion() {
+	string path = "Resources/test.png";
+	Mat img = imread(path);
+	Mat imgGray;
+	cvtColor(img, imgGray, COLOR_BGR2GRAY);
+
+	imshow("original", img);
+	imshow("gray", imgGray);
+	waitKey(0);
+	destroyAllWindows();
+}
+
+void blurImg() {
+	string path = "Resources/test.png";
+	Mat img = imread(path);
+	Mat gray_img, blur_image;
+	cvtColor(img, gray_img, COLOR_BGR2GRAY);
+	GaussianBlur(gray_img, blur_image, Size(7, 7), 10, 10);
+	imshow("RGB", img);
+	imshow("Gray", gray_img);
+	imshow("Blur", blur_image);
+	waitKey(0);
+	destroyAllWindows();
+}
+
+void edgeDetector() {
+	string path = "Resources/test.png";
+	Mat img = imread(path);
+	Mat gray_img, blur_img, canny_img;
+	cvtColor(img, gray_img, COLOR_BGR2GRAY);
+	GaussianBlur(gray_img, blur_img, Size(3, 3), 5, 0);
+	Canny(blur_img, canny_img, 50, 150);
+	imshow("Original", img);
+	imshow("Gray", gray_img);
+	imshow("Blur", blur_img);
+	imshow("Canny", canny_img);
+	waitKey(0);
+	destroyAllWindows();
 }
