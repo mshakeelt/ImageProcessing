@@ -95,3 +95,41 @@ void edgeDetector() {
 	waitKey(0);
 	destroyAllWindows();
 }
+
+void dilateImg() {
+	string path = "Resources/test.png";
+	Mat img = imread(path);
+	Mat gray_img, blur_img, canny_img, dilated_img;
+	Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
+	cvtColor(img, gray_img, COLOR_BGR2GRAY);
+	GaussianBlur(gray_img, blur_img, Size(3, 3), 3, 0);
+	Canny(blur_img, canny_img, 25, 75);
+	dilate(canny_img, dilated_img, kernel);
+	imshow("img", img);
+	imshow("gray", gray_img);
+	imshow("blur", blur_img);
+	imshow("canny", canny_img);
+	imshow("dilated", dilated_img);
+	waitKey(0);
+	destroyAllWindows();
+}
+
+void erodeImg() {
+	string path = "Resources/test.png";
+	Mat img = imread(path);
+	Mat gray_img, blur_img, canny_img, dilated_img, erroded_img;
+	Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
+	cvtColor(img, gray_img, COLOR_BGR2GRAY);
+	GaussianBlur(gray_img, blur_img, Size(3, 3), 3, 0);
+	Canny(blur_img, canny_img, 25, 75);
+	dilate(canny_img, dilated_img, kernel);
+	erode(dilated_img, erroded_img, kernel);
+	imshow("img", img);
+	imshow("gray", gray_img);
+	imshow("blur", blur_img);
+	imshow("canny", canny_img);
+	imshow("dilated", dilated_img);
+	imshow("eroded", erroded_img);
+	waitKey(0);
+	destroyAllWindows();
+}

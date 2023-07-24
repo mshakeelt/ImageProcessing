@@ -4,6 +4,6 @@ using namespace std;
 
 
 int main() {
-	edgeDetector();
+	erodeImg();
 	return 0;
 }
