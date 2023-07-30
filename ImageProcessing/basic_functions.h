@@ -1,3 +1,5 @@
+#pragma once
+
 void readImg();
 void readVid();
 void readCam();
