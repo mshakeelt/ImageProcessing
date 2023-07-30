@@ -2,6 +2,7 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc.hpp>
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 using namespace cv;
@@ -80,6 +81,28 @@ void erodeImg() {
 	imshow("canny", canny_img);
 	imshow("dilated", dilated_img);
 	imshow("eroded", erroded_img);
+	waitKey(0);
+	destroyAllWindows();
+}
+
+void resizeAndCropImg() {
+	string path = "Resources/test.png";
+	Mat img = imread(path);
+	Mat resizedImgWithProportion, resizedImgWithoutProportion, croppedImg;
+	resize(img, resizedImgWithoutProportion, Size(224, 224));
+	resize(img, resizedImgWithProportion, Size(), 0.25, 0.25);
+	Rect roi(200, 15, 300, 400);
+	croppedImg = img(roi);
+	imshow("Original", img);
+	imshow("Resized Image Without Proportion", resizedImgWithoutProportion);
+	imshow("Resized Image With Proportion", resizedImgWithProportion);
+	imshow("Cropped", croppedImg);
+	cout << "Size of the original image: " << img.size << endl;
+	cout << "Channels of the original image: " << img.channels() << endl;
+	cout << "Size of the resized image without proportion: " << resizedImgWithoutProportion.size << endl;
+	cout << "Channels of the resized image without proportion: " << resizedImgWithoutProportion.channels() << endl;
+	cout << "Size of the resized image with proportion: " << resizedImgWithProportion.size << endl;
+	cout << "Channels of the resized image with proportion: " << resizedImgWithProportion.channels() << endl;
 	waitKey(0);
 	destroyAllWindows();
 }

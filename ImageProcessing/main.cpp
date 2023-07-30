@@ -4,6 +4,6 @@ using namespace std;
 
 
 int main() {
-	erodeImg();
+	resizeAndCropImg();
 	return 0;
 }

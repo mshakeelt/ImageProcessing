@@ -8,4 +8,4 @@ void blurImg();
 void edgeDetector();
 void dilateImg();
 void erodeImg();
-
+void resizeAndCropImg();
